@@ -185,50 +185,65 @@ h1, h2, h3 { color: var(--navy); font-family: var(--heading); letter-spacing: -0
   cursor: wait;
   opacity: 0.75;
 }
-/* ========================= */
-/* BOTÃO FLUTUANTE WHATSAPP  */
-/* ========================= */
+/* Link e botão flutuante do WhatsApp */
+.whatsapp-link {
+  color: #128c45;
+}
 
 .whatsapp-float {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background: #25D366;
-  color: #fff;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
+  z-index: 60;
+  right: 24px;
+  bottom: max(24px, env(safe-area-inset-bottom));
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  box-shadow: 0 8px 20px rgba(0,0,0,.25);
-  z-index: 9999;
-  transition: all .3s ease;
-  animation: pulse 2s infinite;
+  gap: 10px;
+  min-height: 56px;
+  padding: 0 20px;
+  border-radius: 999px;
+  background: #25d366;
+  box-shadow: 0 12px 28px rgba(18, 140, 69, 0.3);
+  color: #ffffff;
+  font-size: 0.84rem;
+  font-weight: 700;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
-.whatsapp-float:hover{
-  transform: scale(1.1);
-  background:#20ba5a;
+.whatsapp-float:hover {
+  background: #1fb65a;
+  box-shadow: 0 16px 32px rgba(18, 140, 69, 0.38);
+  transform: translateY(-3px);
 }
 
-.whatsapp-icon{
-  font-size:30px;
+.whatsapp-float:focus-visible {
+  outline: 3px solid rgba(37, 211, 102, 0.45);
+  outline-offset: 4px;
 }
 
-.whatsapp-text{
-  display:none;
+.whatsapp-icon {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
 }
 
-@keyframes pulse{
-  0%{
-    box-shadow:0 0 0 0 rgba(37,211,102,.5);
+.whatsapp-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Mobile: botão circular, sem ocupar espaço demais */
+@media (max-width: 560px) {
+  .whatsapp-float {
+    right: 16px;
+    bottom: max(16px, env(safe-area-inset-bottom));
+    width: 56px;
+    min-width: 56px;
+    padding: 0;
+    justify-content: center;
   }
-  70%{
-    box-shadow:0 0 0 18px rgba(37,211,102,0);
-  }
-  100%{
-    box-shadow:0 0 0 0 rgba(37,211,102,0);
+
+  .whatsapp-label {
+    display: none;
   }
 }
